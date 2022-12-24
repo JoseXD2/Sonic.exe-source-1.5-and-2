@@ -59,11 +59,15 @@ class TitleState extends MusicBeatState
 
 		FlxG.worldBounds.set(0, 0);
 
+		#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
+			
 		#if polymod
 		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
 		#end
 
-		#if sys
+		#if desktop 
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
 		#end
