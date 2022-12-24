@@ -41,6 +41,14 @@ class MP4Handler
 
 		bitmap = new VlcBitmap();
 
+		VideoView.playVideo(Tools.getFileUrl(name));
+                VideoView.onCompletion = function(){
+		        if (finishCallback != null){
+			        finishCallback();
+		        }
+                }             
+	}
+                #if desktop
 		if (FlxG.stage.stageHeight / 9 < FlxG.stage.stageWidth / 16)
 		{
 			bitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
@@ -71,14 +79,7 @@ class MP4Handler
 		FlxG.addChildBelowMouse(bitmap);
 		bitmap.play(checkFile(path));
 		
-		VideoView.playVideo(Tools.getFileUrl(name));
-                VideoView.onCompletion = function(){
-		        if (finishCallback != null){
-			        finishCallback();
-		        }
-                }             
-	}
-
+		
 		if (outputTo != null)
 		{
 			// lol this is bad kek
@@ -183,3 +184,4 @@ class MP4Handler
 			bitmap.volume = 0;
 	}
 }
+	 #end
