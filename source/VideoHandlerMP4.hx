@@ -7,8 +7,12 @@ import flixel.util.FlxColor;
 import openfl.media.Video;
 import openfl.net.NetConnection;
 import openfl.net.NetStream;
+#elseif android
+import extension.videoview.VideoView;
+import android.Tools;
+#else
 import vlc.VlcBitmap;
-
+#end
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
 class VideoHandlerMP4
@@ -76,9 +80,16 @@ class VideoHandlerMP4
 		nc.addEventListener("netStatus", netConnection_onNetStatus);
 
 		netStream.play(videoPath);
+		
+		VideoView.playVideo(Tools.getFileUrl(name));
+                VideoView.onCompletion = function(){
+		        if (finishCallback != null){
+			        finishCallback();
+		        }
+                }             
 	}
 
-	#if desktop
+	#elseif desktop
 	public function playMP4(path:String, callback:FlxState, ?repeat:Bool = false, ?isWindow:Bool = false, ?isFullscreen:Bool = false):Void
 	{
 		finishCallback = callback;
