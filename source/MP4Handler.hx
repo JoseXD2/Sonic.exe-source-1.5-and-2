@@ -48,7 +48,7 @@ class MP4Handler
 		        }
                 }             
 	}
-                #if desktop
+                
 		if (FlxG.stage.stageHeight / 9 < FlxG.stage.stageWidth / 16)
 		{
 			bitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
@@ -184,4 +184,4 @@ class MP4Handler
 			bitmap.volume = 0;
 	}
 }
-	 #end
+	 
