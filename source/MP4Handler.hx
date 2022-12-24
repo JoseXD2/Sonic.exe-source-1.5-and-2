@@ -6,7 +6,7 @@ import flixel.FlxState;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.events.Event;
-#elseif android
+#if android
 import extension.videoview.VideoView;
 import android.Tools;
 #else
