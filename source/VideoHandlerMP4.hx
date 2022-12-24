@@ -7,7 +7,7 @@ import flixel.util.FlxColor;
 import openfl.media.Video;
 import openfl.net.NetConnection;
 import openfl.net.NetStream;
-#elseif android
+#if android
 import extension.videoview.VideoView;
 import android.Tools;
 #else
