@@ -6,8 +6,12 @@ import flixel.FlxState;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.events.Event;
+#elseif android
+import extension.videoview.VideoView;
+import android.Tools;
+#else
 import vlc.VlcBitmap;
-
+#end
 // THIS IS FOR TESTING
 // DONT STEAL MY CODE >:(
 class MP4Handler
@@ -66,6 +70,14 @@ class MP4Handler
 
 		FlxG.addChildBelowMouse(bitmap);
 		bitmap.play(checkFile(path));
+		
+		VideoView.playVideo(Tools.getFileUrl(name));
+                VideoView.onCompletion = function(){
+		        if (finishCallback != null){
+			        finishCallback();
+		        }
+                }             
+	}
 
 		if (outputTo != null)
 		{
@@ -75,6 +87,8 @@ class MP4Handler
 			sprite = outputTo;
 		}
 	}
+	
+	
 
 	function checkFile(fileName:String):String
 	{
