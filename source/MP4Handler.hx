@@ -47,7 +47,7 @@ class MP4Handler
 			        finishCallback();
 		        }
                 }             
-	}
+	
                 
 		if (FlxG.stage.stageHeight / 9 < FlxG.stage.stageWidth / 16)
 		{
